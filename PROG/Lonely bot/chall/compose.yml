@@ -1,0 +1,18 @@
+services:
+  chat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: chat
+
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '512M'
+
+    ports:
+      - "12345:12345"
+
+    restart: unless-stopped

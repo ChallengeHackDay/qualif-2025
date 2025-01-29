@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    volumes:
+      - ./src:/var/www/html
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ctf
+      MYSQL_USER: ctfuser
+      MYSQL_PASSWORD: ctfpassword
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+

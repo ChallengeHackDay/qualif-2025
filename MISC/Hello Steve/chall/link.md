@@ -1,0 +1,1 @@
+To get the challenge, go [here](https://challenges.s3.rbx.io.cloud.ovh.net/challenges/HelloSteve.zip)

@@ -1,0 +1,3 @@
+translate
+python-dotenv
+deep-translator

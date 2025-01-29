@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Order of Gears</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2c2a2a;
+            font-family: 'Courier New', Courier, monospace;
+            color: #e0c097;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #8b5a2b, #6d4c41);
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content h2 {
+            margin-top: 30px;
+        }
+
+        .construction {
+            margin: 30px auto;
+            width: 300px;
+            height: 300px;
+            border: 10px solid #8b5a2b;
+            border-radius: 50%;
+            position: relative;
+            animation: spin 10s linear infinite;
+        }
+
+        .construction img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+        }
+
+        .hidden-text {
+            margin-top: 20px;
+            color: #e0c097;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s ease-in-out;
+        }
+
+        .hidden-text:hover {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #b2a28e;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>HACKDAY{ec4975e152bef92b2105681fd80f0c0e}</h2>
+    
+    <footer>
+        <p>&copy; 2025 - The Order of Gears | All rights reserved.</p>
+    </footer>
+</body>
+</html>

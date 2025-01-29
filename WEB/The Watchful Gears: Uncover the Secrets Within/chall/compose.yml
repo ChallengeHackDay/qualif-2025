@@ -1,0 +1,9 @@
+services:
+  watchful-gears:
+    image: nginx
+    ports:
+      - 37784:80
+    volumes:
+      - ./site:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped

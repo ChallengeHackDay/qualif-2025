@@ -1,0 +1,8 @@
+services:
+  app:
+    image: uselessanimalssorting:latest
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLAG=HACKDAY{c3rtIfIED_zOOlogI$t}

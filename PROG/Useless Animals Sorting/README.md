@@ -1,0 +1,2 @@
+A bored zookeeper, tired of the monotony of his daily routine, decided to invent a machine to sort the animals arriving at the zoo. Not that it would make his life any easier... he's just bored out of his mind and needs something to pass the time. An amateur engineer in his spare time, he has begun designing the contraption and now turns to you for help. 
+You look just as bored as he is and everyone loves machines right ? So why not lend a hand?

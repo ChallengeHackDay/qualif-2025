@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Website Verificator 3000</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+    body {
+      background: url('https://example.com/steampunk-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'IM Fell English SC', serif;
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .form-control, .btn {
+      margin: 10px 0;
+    }
+    #results {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      color: #fff !important;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #343a40;
+    }
+    td {
+      background-color: #495057;
+    }
+    .status-banner {
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .status-online {
+      background-color: #28a745;
+    }
+    .status-offline {
+      background-color: #dc3545;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Website Checkup</h1>
+      <form id="checkup-form">
+        <input type="url" name="url" class="form-control"
+          placeholder="Enter website URL" required>
+        <div class="form-check">
+          <input type="checkbox" name="showBody" id="show_body"
+            class="form-check-input">
+          <label for="show_body" class="form-check-label">Show full site
+            body</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Check Website</button>
+      </form>
+      <div id="results" class="text-left"></div>
+    </div>
+
+    <script>
+    document.getElementById('checkup-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const resultsDiv = document.getElementById('results');
+
+      $.ajax({
+        url: '/api/check',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          let statusBanner = `<div class="status-banner ${data.online ? 'status-online' : 'status-offline'}">
+                                ${data.online ? 'The site is online' : 'The site is offline'}
+                              </div>`;
+            let resultsTable = document.createElement('div');
+            if (data.online) {
+            let table = document.createElement('table');
+            table.className = 'table table-striped';
+
+            let fetchTimeRow = document.createElement('tr');
+            let fetchTimeHeader = document.createElement('th');
+            fetchTimeHeader.innerText = 'Fetch Time';
+            let fetchTimeData = document.createElement('td');
+            fetchTimeData.innerText = data.fetch_time;
+            fetchTimeRow.appendChild(fetchTimeHeader);
+            fetchTimeRow.appendChild(fetchTimeData);
+            table.appendChild(fetchTimeRow);
+
+            let seoMetaTagsRow = document.createElement('tr');
+            let seoMetaTagsHeader = document.createElement('th');
+            seoMetaTagsHeader.innerText = 'SEO Meta Tags Present';
+            let seoMetaTagsData = document.createElement('td');
+            seoMetaTagsData.innerHTML = data.seo_meta_tags ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>';
+            seoMetaTagsRow.appendChild(seoMetaTagsHeader);
+            seoMetaTagsRow.appendChild(seoMetaTagsData);
+            table.appendChild(seoMetaTagsRow);
+
+            if (data.body) {
+              let bodyRow = document.createElement('tr');
+              let bodyHeader = document.createElement('th');
+              bodyHeader.innerText = 'Body';
+              let bodyData = document.createElement('td');
+              let pre = document.createElement('pre');
+              pre.innerText = data.body;
+              bodyData.appendChild(pre);
+              bodyRow.appendChild(bodyHeader);
+              bodyRow.appendChild(bodyData);
+              table.appendChild(bodyRow);
+            }
+
+            let resultsHeader = document.createElement('h3');
+            resultsHeader.innerText = 'Results';
+            resultsTable.appendChild(resultsHeader);
+            resultsTable.appendChild(table);
+            }
+
+            resultsDiv.innerHTML = statusBanner;
+            resultsDiv.appendChild(resultsTable);
+        },
+        error: function(error) {
+          console.error(error);
+          resultsDiv.innerHTML = '<p class="text-danger">Error: ' + error.responseJSON.message + '</p>';
+        }
+      });
+    });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+Last year people were angry at my chall for needing the use of open-source tools such as bkcrack. This year's chall still has zips, but they have NO passwords. HA ! You still need to decrypt the flag, tho. glhf

@@ -1,0 +1,1 @@
+You can get the challenge file [here](https://challenges.s3.rbx.io.cloud.ovh.net/challenges/well-hidden-message.avi)

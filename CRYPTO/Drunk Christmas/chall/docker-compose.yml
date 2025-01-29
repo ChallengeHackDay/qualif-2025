@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  chall_app:
+    build:
+      context: .
+    ports:
+      - "5000:5000" # A gauche, pas touche, A droite, vous pouvez le rediriger vers un autre port si besoin
+    environment:
+      FLASK_APP: app.py

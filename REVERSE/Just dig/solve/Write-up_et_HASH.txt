@@ -1,0 +1,26 @@
+Afin de pouvoir réaliser ce chall les challengers doivent utiliser gdb (ou un autre outil permettant le debug et de connaitre l'état des registres eax ebx ecx et edx).
+IL vérifieront l'état de ces registres une fois qu'ils seront tous remis à 0.
+à chaque registre mis à jour il vérifieront la valeur vers où pointent ces registres.
+Il obtiendront au fur et à mesure une suite hexa, la voici:
+
+53454644 53305242 57587470 58307876 646b5666 52476c48 5a79464f 4f563878 626c5276 587a527a 6258303d
+
+Une fois cette suite hexa il la transformerons en ASCII, cela donnera une suite encodée en base64:
+
+SEFDS0RBWXtpX0xvdkVfRGlHZyFOOV8xblRvXzRzbX0=
+
+Une fois cette base64 obtenu il décode en ASCII:
+
+HACKDAY{i_LovE_DiGg!N9_1nTo_4sm}
+
+Il obtiennent alors le flag.
+
+
+HASH SHA256:
+
+966a1f6b87a7c29df32838da5afeead32c5141603faba59b4373c98bcd67b5d9
+
+
+
+
+
