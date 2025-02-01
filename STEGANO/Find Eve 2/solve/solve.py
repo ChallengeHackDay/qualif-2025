@@ -120,7 +120,7 @@ def extract_data_from_spaced_diagonals(image_path, spacing=359):
 
 # krbl.png represent a Red Jacket (flag of Frind Eve 1)
 
-hidden_image_path = r"C:/Users/HUANG/Documents/Ecole/HackDay/ImagesSite/Image_png/Where_is_Eve_2/krbl.png"
+hidden_image_path = r"./Where_is_Eve_2/krbl.png"
 
 
 
